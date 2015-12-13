@@ -57,6 +57,12 @@ void GenerateParameters::computePolynomial() {
 	for (int i = 1; i < reconstructionNumber ; ++i) {
 		// We set a random number from Z_p as the i-th coefficient of the polynomial
 		random(temporary);
+		if (i + 1 == reconstructionNumber) {
+			// We assure that the leading coefficient is not null
+			while (temporary == 0) {
+				random(temporary);
+			}
+		}
 		SetCoeff(polynomial, i, temporary);
 	}
 }
